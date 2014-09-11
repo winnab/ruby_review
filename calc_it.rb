@@ -1,5 +1,8 @@
 first_number = 1
 second_number = 1
+# TODO:
+## any kind of validation, error checking, allow floats or ints
+## support more than two numbers
 
 def compute
 
