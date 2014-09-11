@@ -1,6 +1,23 @@
 first_number = 1
 second_number = 1
 
+def compute
+
+end
+
+def greet
+
+end
+
+def confirm
+
+end
+
+def ask_for_input
+
+end
+
+
 puts "Let's do math."
 print "Wanna (a)dd, (s)ubstract, (m)ultiply, or (d)ivide? "
 operation = gets.chomp.strip.downcase.intern
