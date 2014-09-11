@@ -5,6 +5,8 @@ second_number = 1
 ## support more than two numbers
 
 def compute
+@numbers_for_calculation = []
+@operator_details = nil
 
 end
 
@@ -26,25 +28,26 @@ print "Wanna (a)dd, (s)ubstract, (m)ultiply, or (d)ivide? "
 operation = gets.chomp.strip.downcase.intern
 
 operation_string = {
+@operator_options = {
   a: {
+    operator: "+",
     operator_string: "add",
-    question_string: "Added to?",
-    answer_string: "#{first_number} + #{second_number} is: #{first_number + second_number}"
+    next_num_prompt: "Added to?",
   },
   s: {
+    operator: "-",
     operator_string: "subtract",
-    question_string: "Subtracted from?",
-    answer_string: "#{first_number} - #{second_number} is: #{first_number - second_number}"
+    next_num_prompt: "Subtracted from?",
   },
   m: {
+    operator: "*",
     operator_string: "multiply",
-    question_string: "Multiplied by?",
-    answer_string: "#{first_number} * #{second_number} is: #{first_number * second_number}"
+    next_num_prompt: "Multiplied by?",
   },
   d: {
+    operator: "/",
     operator_string: "divide",
-    question_string: "Divided by?",
-    answer_string: "#{first_number} / #{second_number} is: #{first_number / second_number}"
+    next_num_prompt: "Divided by?",
   }
 }
 
