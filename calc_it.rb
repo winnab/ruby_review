@@ -2,30 +2,9 @@
 ## any kind of validation, error checking, allow floats or ints
 ## support more than two numbers
 
-def compute
 @numbers_for_calculation = []
 @operator_details = nil
 
-end
-
-def greet
-
-end
-
-def confirm
-
-end
-
-def ask_for_input
-
-end
-
-
-puts "Let's do math."
-print "Wanna (a)dd, (s)ubstract, (m)ultiply, or (d)ivide? "
-operation = gets.chomp.strip.downcase.intern
-
-operation_string = {
 @operator_options = {
   a: {
     operator: "+",
@@ -49,31 +28,54 @@ operation_string = {
   }
 }
 
-print "Cool. First number to #{operation_string[operation][:operator_string]}? "
-first_number = gets.chomp.to_i
-
-case operation
-when :a
-   print operation_string[:a][:question_string] + " "
-when :s
-   print operation_string[:s][:question_string] + " "
-when :m
-   print operation_string[:m][:question_string] + " "
-when :d
-   print operation_string[:d][:question_string] + " "
+#--------------------#
+# Presentational
+#--------------------#
+def greet
+  puts "Let's do some math."
+  puts "--------------------"
 end
 
-second_number = gets.chomp.to_i
-
-case operation
-when :a
-   puts operation_string[:a][:answer_string]
-when :s
-   puts operation_string[:s][:answer_string]
-when :m
-   puts operation_string[:m][:answer_string]
-when :d
-   puts operation_string[:d][:answer_string]
+def ask_which_operator
+  print "Wanna (a)dd, (s)ubstract, (m)ultiply, or (d)ivide? "
+  set_operator_details(gets)
 end
+
+
+def ask_first_number
+  print "Cool. First number to #{@operator_details[:operator_string]}? "
+  store_number(gets)
+end
+
+def ask_additional_numbers
+  print "#{@operator_details[:next_num_prompt]} "
+  store_number(gets)
+end
+
+def display_answer_as_message
+  puts "#{@numbers_for_calculation[0]} #{@operator_details[:operator]} #{@numbers_for_calculation[1]} is: #{do_calc}"
+end
+
+#--------------------#
+# Helpers
+#--------------------#
+def set_operator_details(input)
+  @operator_details = @operator_options.fetch(input.chomp.strip.downcase.intern)
+end
+
+def store_number(num)
+  @numbers_for_calculation.push(num.chomp.to_i)
+end
+
+def do_calc
+  @numbers_for_calculation.reduce(@operator_details[:operator])
+end
+
+greet
+ask_which_operator
+ask_first_number
+ask_additional_numbers
+display_answer_as_message
+
 
 
